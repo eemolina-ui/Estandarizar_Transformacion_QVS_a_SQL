@@ -1,0 +1,308 @@
+{
+  "metadata": {
+    "soundFile": "sound_file_path",
+    "duration": 4.852
+  },
+  "mouthCues": [
+    {
+      "start": 0,
+      "end": 0.006,
+      "value": "t"
+    },
+    {
+      "start": 0.006,
+      "end": 0.078,
+      "value": "o"
+    },
+    {
+      "start": 0.078,
+      "end": 0.129,
+      "value": "s"
+    },
+    {
+      "start": 0.129,
+      "end": 0.267,
+      "value": "i"
+    },
+    {
+      "start": 0.267,
+      "end": 0.338,
+      "value": "e"
+    },
+    {
+      "start": 0.338,
+      "end": 0.38,
+      "value": "t"
+    },
+    {
+      "start": 0.38,
+      "end": 0.469,
+      "value": "t"
+    },
+    {
+      "start": 0.469,
+      "end": 0.528,
+      "value": "o"
+    },
+    {
+      "start": 0.528,
+      "end": 0.667,
+      "value": "sil"
+    },
+    {
+      "start": 0.667,
+      "end": 0.861,
+      "value": "u"
+    },
+    {
+      "start": 0.861,
+      "end": 1.006,
+      "value": "B"
+    },
+    {
+      "start": 1.006,
+      "end": 1.056,
+      "value": "o"
+    },
+    {
+      "start": 1.056,
+      "end": 1.136,
+      "value": "u"
+    },
+    {
+      "start": 1.136,
+      "end": 1.248,
+      "value": "t"
+    },
+    {
+      "start": 1.248,
+      "end": 1.315,
+      "value": "e"
+    },
+    {
+      "start": 1.315,
+      "end": 1.386,
+      "value": "r"
+    },
+    {
+      "start": 1.386,
+      "end": 1.484,
+      "value": "o"
+    },
+    {
+      "start": 1.484,
+      "end": 1.554,
+      "value": "t"
+    },
+    {
+      "start": 1.554,
+      "end": 1.614,
+      "value": "e"
+    },
+    {
+      "start": 1.614,
+      "end": 1.655,
+      "value": "t"
+    },
+    {
+      "start": 1.655,
+      "end": 1.684,
+      "value": "t"
+    },
+    {
+      "start": 1.684,
+      "end": 1.734,
+      "value": "a"
+    },
+    {
+      "start": 1.734,
+      "end": 1.784,
+      "value": "k"
+    },
+    {
+      "start": 1.784,
+      "end": 1.886,
+      "value": "o"
+    },
+    {
+      "start": 1.886,
+      "end": 1.921,
+      "value": "p"
+    },
+    {
+      "start": 1.921,
+      "end": 1.984,
+      "value": "u"
+    },
+    {
+      "start": 1.984,
+      "end": 2.023,
+      "value": "t"
+    },
+    {
+      "start": 2.023,
+      "end": 2.073,
+      "value": "i"
+    },
+    {
+      "start": 2.073,
+      "end": 2.164,
+      "value": "k"
+    },
+    {
+      "start": 2.164,
+      "end": 2.225,
+      "value": "a"
+    },
+    {
+      "start": 2.225,
+      "end": 2.253,
+      "value": "s"
+    },
+    {
+      "start": 2.253,
+      "end": 2.395,
+      "value": "i"
+    },
+    {
+      "start": 2.395,
+      "end": 2.485,
+      "value": "o"
+    },
+    {
+      "start": 2.485,
+      "end": 2.544,
+      "value": "t"
+    },
+    {
+      "start": 2.544,
+      "end": 2.775,
+      "value": "sil"
+    },
+    {
+      "start": 2.775,
+      "end": 3.168,
+      "value": "p"
+    },
+    {
+      "start": 3.168,
+      "end": 3.206,
+      "value": "o"
+    },
+    {
+      "start": 3.206,
+      "end": 3.288,
+      "value": "T"
+    },
+    {
+      "start": 3.288,
+      "end": 3.348,
+      "value": "t"
+    },
+    {
+      "start": 3.348,
+      "end": 3.402,
+      "value": "i"
+    },
+    {
+      "start": 3.402,
+      "end": 3.491,
+      "value": "a"
+    },
+    {
+      "start": 3.491,
+      "end": 3.564,
+      "value": "s"
+    },
+    {
+      "start": 3.564,
+      "end": 3.664,
+      "value": "i"
+    },
+    {
+      "start": 3.664,
+      "end": 3.729,
+      "value": "t"
+    },
+    {
+      "start": 3.729,
+      "end": 3.794,
+      "value": "t"
+    },
+    {
+      "start": 3.794,
+      "end": 3.846,
+      "value": "e"
+    },
+    {
+      "start": 3.846,
+      "end": 3.896,
+      "value": "t"
+    },
+    {
+      "start": 3.896,
+      "end": 3.993,
+      "value": "t"
+    },
+    {
+      "start": 3.993,
+      "end": 4.053,
+      "value": "a"
+    },
+    {
+      "start": 4.053,
+      "end": 4.112,
+      "value": "t"
+    },
+    {
+      "start": 4.112,
+      "end": 4.17,
+      "value": "t"
+    },
+    {
+      "start": 4.17,
+      "end": 4.24,
+      "value": "o"
+    },
+    {
+      "start": 4.24,
+      "end": 4.308,
+      "value": "T"
+    },
+    {
+      "start": 4.308,
+      "end": 4.369,
+      "value": "e"
+    },
+    {
+      "start": 4.369,
+      "end": 4.416,
+      "value": "t"
+    },
+    {
+      "start": 4.416,
+      "end": 4.495,
+      "value": "u"
+    },
+    {
+      "start": 4.495,
+      "end": 4.555,
+      "value": "e"
+    },
+    {
+      "start": 4.555,
+      "end": 4.612,
+      "value": "B"
+    },
+    {
+      "start": 4.612,
+      "end": 4.692,
+      "value": "o"
+    },
+    {
+      "start": 4.692,
+      "end": 4.852,
+      "value": "sil"
+    }
+  ]
+}

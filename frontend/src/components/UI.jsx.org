@@ -1,0 +1,247 @@
+import AudioInput from "./AudioInput";
+import { useRef, useState, useEffect} from "react";
+import { useChat } from "../hooks/useChat";
+import {BackgroundSelector} from "./BackgroundSelector";
+import CameraComponent from "./CameraComponent";
+import ImageViewerComponent from "./ImageViewerComponent";
+import MapComponent from "./MapComponent";
+import MultiDimensionalChart from "./ChartComponent";
+import ChatHistory from "./chatHistory";
+//Iconos svg
+import Loader2Icon from "./icons/Loader2Icon";
+import SendIcon from "./icons/SendIcon";
+
+export const UI = ({ hidden, ...props }) => {
+  const input = useRef();
+  const cameraRef = useRef();
+  const { chat, loading, cameraZoomed, setCameraZoomed, message, setCameraAside, cameraAside, clearConversation } = useChat();
+  const [isCameraBackground, setIsCameraBackground] = useState(false);
+
+  const [locations, setLocations] = useState([]);
+  const [sampleData, setSampleData] = useState([]);
+  const [imagesData, setImagesData] = useState([]);
+  const [tableData, setTableData] = useState({});
+  const [tableColumns, setTableColumns] = useState([]);
+  const [clearChat, setClearChat] = useState(false);
+  const [historyKey, setHistoryKey] = useState(0);
+  const timeoutRef = useRef(null);
+
+  useEffect(() => {
+    if (message && message.locations) {
+      setLocations(message.locations);
+    }
+  }, [message]);
+
+  useEffect(() => {
+    if (message && !message.locations) {
+      setLocations([]);
+    }
+  }, [message]);
+  useEffect(() => {
+    if (message && message.chartData) {
+      setCameraAside(true);
+      setSampleData(message.chartData);
+    }
+  }, [message]);
+  useEffect(() => {
+    if (message && !message.chartData) {
+      setCameraAside(false);
+      setSampleData([]);
+    }
+  }, [message]);
+  useEffect(() => {
+    if (message && message.images) {
+      if (message.images.length > 0) {
+      setCameraAside(true);
+      setImagesData(message.images);
+      }
+    }
+  }, [message]);
+  useEffect(() => {
+    if (message && !message.images) {
+      setCameraAside(false);
+      setImagesData([]);
+    }
+  }, [message]);
+  useEffect(() => {
+    if (message && message.data) {
+      if (message.data.length > 0 ) {
+      setCameraAside(true);
+      setTableData(message.data);
+      setTableColumns(Object.keys(message.data[0]));
+      }
+    }
+  }, [message]);
+  useEffect(() => {
+    if (message && !message.data) {
+      setCameraAside(false);
+      setTableData([]);
+      setTableColumns([]);
+    }
+  }, [message]);
+  const captureAndSendMessage = (text) => {
+    if (!loading && !message) {
+      const imageDataUrl = cameraRef.current.captureImage();
+      if (imageDataUrl) {
+        console.log("Imagen capturada:", imageDataUrl.substring(0, 50) + "...");
+      }
+      chat(text, imageDataUrl);
+    }
+  };
+
+  const sendMessage = () => {
+    const text = input.current.value;
+    captureAndSendMessage(text);
+    input.current.value = "";
+    resetTimer();
+  };
+
+  const handleSpeakClick = (transcript) => {
+    captureAndSendMessage(transcript);
+  };
+
+  const handleToggleBackground = () => {
+    setIsCameraBackground(!isCameraBackground);
+  };
+
+  const resetTimer = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    timeoutRef.current = setTimeout(() => {
+      setClearChat(true);
+    }, 300000); // 5 minutes
+  };
+
+  useEffect(() => {
+    resetTimer();
+    return () => clearTimeout(timeoutRef.current);
+  }, []);
+
+  useEffect(() => {
+    if (message) resetTimer();
+  }, [message]);
+
+  useEffect(() => {
+    if (clearChat) {
+      setClearChat(false);
+    }
+  }, [clearChat]);
+
+  if (hidden) {
+    return null;
+  }
+
+  return (
+    <>
+      <div className={`fixed top-0 left-0 right-0 bottom-0 z-10 flex justify-between p-4 flex-col pointer-events-none ${isCameraBackground ? 'bg-opacity-50 backdrop-blur-sm' : ''}`}> 
+        <div className="self-start backdrop-blur-md bg-white bg-opacity-50 p-4 rounded-lg max-w-lg border border-white/20 shadow-xl">
+          <h1 className="font-black text-xl">Ingrid Asistente Virtual Corporativo</h1>
+          { !window.matchMedia("(max-width: 768px)").matches && (
+              <p className="text-gray-700"> Ingresa texto o haz clic en el botón de hablar para charlar.</p>
+          )}
+        </div>  
+
+        <CameraComponent 
+          ref={cameraRef} 
+          isBackground={isCameraBackground}
+          onToggleBackground={handleToggleBackground}
+        />
+
+        <div className="flex justify-between items-center w-full">
+          <div className="flex flex-col items-start">
+            {locations.length > 0 && (
+              <div className="map-container pointer-events-auto">
+                <MapComponent locations={locations} />
+              </div>
+            )}
+          </div>
+          <div className="flex flex-col items-end">
+            {sampleData.length > 0 && (
+              <div className="chart-container pointer-events-auto">
+                <MultiDimensionalChart data={sampleData} />
+              </div>
+            )}
+          </div>
+          {/* <div className="flex flex-col items-end">
+            {imagesData.length>0 && (
+              <div className="image-container pointer-events-auto">
+                <ImageViewerComponent images={imagesData} titles={[]} tableData={tableData} tableColumns={tableColumns} />
+              </div>
+            )}
+          </div>
+          <div className="flex flex-col items-end">
+            <button
+              onClick={() => setCameraZoomed(!cameraZoomed)}
+              className="pointer-events-auto bg-[#BBB9DA] hover:bg-[#7874B4] text-white p-4 rounded-md"
+            >
+              {cameraZoomed ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM13.5 10.5h-6"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6"
+                  />
+                </svg>
+              )}
+            </button>
+          </div> */}
+        </div>
+        <div className="pointer-events-auto max-w-lg w-full mx-auto">
+            <div className="flex items-center w-full rounded-2xl p-1 gap-3 bg-opacity-50 bg-white backdrop-blur-md shadow-lg ">
+                <input
+                  className="flex-1 min-w-0 placeholder:text-gray-800 placeholder:italic py-2 px-3 rounded-lg bg-transparent border-none focus:outline-none"
+                  placeholder="¿En qué te puedo ayudar?"
+                    ref={input}
+                    onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                            sendMessage();
+                        }
+                    }}
+                />
+                <button
+                    disabled={loading || message}
+                    onClick={sendMessage}
+                    className={`flex-shrink-0 bg-[#7874B4] hover:bg-[#5e5a95] text-white p-2 rounded-xl transition-colors ${ 
+                        loading || message ? "cursor-not-allowed opacity-50" : ""
+                    }`}
+                    aria-label="Enviar"
+                >
+                    {loading ? (
+                        <Loader2Icon className="animate-spin w-5 h-5" /> 
+                    ) : (
+                        <SendIcon className="w-5 h-5" />
+                    )}
+                </button>
+                <AudioInput onSpeechEnd={handleSpeakClick} />
+            </div>
+        </div>
+      </div>
+      
+      {/* Añadimos el componente de historial de chat */}
+      <ChatHistory key={historyKey} clear={clearChat} />
+    </>
+  );
+};

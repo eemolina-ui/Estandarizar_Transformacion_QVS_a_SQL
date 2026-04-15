@@ -1,0 +1,61 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend.dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - FLASK_ENV=development
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./backend:/app
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend.dockerfile
+    ports:
+      - "5173:5173"
+    environment:
+      - env_file=./frontend/.env
+    depends_on:
+      - backend
+  
+  #forecast-service:
+  #  build:
+  #    context: .
+  #    dockerfile: ./bbdd/chronos.dockerfile
+  #  ports:
+  #    - "8000:8000"
+  #  env_file:
+  #    - ./bbdd/.env
+    # environment:
+    #   HF_TOKEN: "${HF_TOKEN}"
+  
+  #qdrant:
+  #  image: qdrant/qdrant:latest
+  #  ports:
+  #      - "6333:6333"
+  #  volumes:
+  #    - qdrant_storage_lp:/qdrant_data/qdrant/storage
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: Estandarizar_Transformacion_qdrant
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_storage_lp:/qdrant/storage
+    networks:
+      - proyect
+    restart: unless-stopped
+
+networks:
+  proyect:
+    driver: bridge  
+
+volumes:
+  qdrant_storage_lp:

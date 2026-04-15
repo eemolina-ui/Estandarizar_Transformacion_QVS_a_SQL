@@ -1,0 +1,92 @@
+{
+    "generacion_de_contenido": {
+      "descripcion": "aplicacion con diferentes pestanas para mostrar generacion y edicion de imagen basada en caracteristicas personalizables o tendencias y logos",
+      "vertical": "percepcion cognitiva",
+      "plataforma": "streamlit",
+      "plataforma_de_despliegue": "local",
+      "costo_actual": "$0.00",
+      "costo_supuesto": "$1.00/hrs",
+      "tiempo_de_despliegue": "30 min",
+      "repo":"https://github.com/AI-ML-Lab/demos/tree/main/de_generacion_imagen"
+    },
+    "generacion_de_video": {
+      "descripcion": "aplicacion en js para integrar pipelines de generacion de video",
+      "vertical": "percepcion cognitiva",
+      "plataforma": "comfyui",
+      "plataforma_de_despliegue": "gpu espana",
+      "costo_actual": "$0.00",
+      "costo_supuesto": "$10.00/hrs",
+      "tiempo_de_despliegue": "30 min",
+      "repo":"https://www.comfydeploy.com/"
+    },
+    "vision_artificial": {
+      "descripcion": "demo de vision y reconocimiento de defectos en lineas de produccion con categorias abiertas, para videos en archivos locales y en youtube",
+      "vertical": "percepcion cognitiva",
+      "plataforma": "vue",
+      "plataforma_de_despliegue": "gpu espana",
+      "costo_actual": "$0.00",
+      "costo_supuesto": "$10.00/hrs",
+      "tiempo_de_despliegue": "30 min",
+      "repo":"https://github.com/AI-ML-Lab/de_vision"
+    },
+    "asistentes_virtuales_mia": {
+      "descripcion": "conexion a whatsapp for business con chatbot y google maps, asistente multimodal con vision y voz, y gestión de eventos y reservaciones",
+      "vertical": "percepcion cognitiva",
+      "plataforma": "whatsapp",
+      "plataforma_de_despliegue": "aws",
+      "costo_actual": "$0.50/hr",
+      "costo_supuesto": "$1.00/hrs",
+      "tiempo_de_despliegue": "1 hora",
+      "repo":"https://github.com/AI-ML-Lab/MIA_FA"
+    },
+    "avatares": {
+      "descripcion": "interfaz de chat texto a video que permite tener una respuesta con sintesis de voz con el servicio de azure",
+      "vertical": "percepcion cognitiva",
+      "plataforma": "vue",
+      "plataforma_de_despliegue": "azure",
+      "costo_actual": "$1.00/hr",
+      "costo_supuesto": "$1.00/hrs",
+      "tiempo_de_despliegue": "30 min",
+      "repo":"https://github.com/AI-ML-Lab/demos/tree/main/de_avatares"
+    },
+    "clasificacion": {
+      "descripcion": "demo de algoritmos de clasificacion supervisada y no supervisada, clusterizacion, e ingenieria de caracteristicas, con visualizaciones interactivas",
+      "vertical": "algoritmos y ds",
+      "plataforma": "streamlit",
+      "plataforma_de_despliegue": "local",
+      "costo_actual": "$0.00",
+      "costo_supuesto": "$1.00/hrs",
+      "tiempo_de_despliegue": "30 min",
+      "repo":"https://github.com/AI-ML-Lab/ChurnKiller"
+    },
+    "pronosticos": {
+      "descripcion": "demo de algoritmos de pronosticos, zero shot y con variables exogenas, con implementaciones de redes neuronales lstm(longshort tem memory), arima, prophet y chronos",
+      "vertical": "algoritmos y ds",
+      "plataforma": "streamlit",
+      "plataforma_de_despliegue": "local, lighning",
+      "costo_actual": "$0.00",
+      "costo_supuesto": "$1.00/hrs",
+      "tiempo_de_despliegue": "30 min",
+      "repo":"https://github.com/AI-ML-Lab/de_forecast"
+    },
+    "facturacion": {
+      "descripcion": "demo de extraccion y ocr de formatos no estructurados",
+      "vertical": "percepcion cognitiva",
+      "plataforma": "streamlit",
+      "plataforma_de_despliegue": "azure",
+      "costo_actual": "$0.50/hr",
+      "costo_supuesto": "$5.00/hrs",
+      "tiempo_de_despliegue": "0 min",
+      "repo":"https://github.com/AI-ML-Lab/demos/tree/main/de_gestiondocumental-img2dbs"
+    },
+    "rosettaia": {
+      "descripcion": "demo de traduccion de codigo, de diversos lenguajes de origen a destino, para scripts individuales y archivos en zip con multiples scripts",
+      "vertical": "percepcion cognitiva",
+      "plataforma": "azure espana",
+      "plataforma_de_despliegue": "azure espana",
+      "costo_actual": "$0.00",
+      "costo_supuesto": "$1.00/hrs",
+      "tiempo_de_despliegue": "5 min",
+      "repo":"https://github.com/AI-ML-Lab/ac_arq_rosettia"
+    }
+  }  

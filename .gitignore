@@ -1,0 +1,179 @@
+## ignore del front
+# environment
+.env
+.venv/*
+.venvb/*
+
+contact_data.csv
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+# Ignore Python virtual environment directory
+.venv
+.venvb
+# pycache
+**/__pycache_/
+**/*.pyc
+
+# Virtual Environment
+.venv
+.venvb/
+venv/
+ENV/
+contact_data.csv
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+
+# Backend specific
+de_avatar_lp_backend/audios/message_*
+
+# Frontend specific
+de_avatar_lp_frontend/node_modules/
+de_avatar_lp_frontend/dist/
+de_avatar_lp_frontend/dist-ssr/
+de_avatar_lp_frontend/*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/development
+## ignore del back
+.env
+node_modules
+bin
+audios/message_*
+de_avatar_lp_backend/downloads/*
+
+
+__pycache__/
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Docker
+*.env
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~.nib
+
+contact_data.csv
+## ignore del front
+# environment
+.env
+.venv/*
+.venvb/*
+
+contact_data.csv
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+# Ignore Python virtual environment directory
+.venv
+.venvb
+# pycache
+**/__pycache_/
+**/*.pyc
+
+# Virtual Environment
+.venv
+.venvb/
+venv/
+ENV/
+contact_data.csv
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+
+# Backend specific
+de_avatar_lp_backend/audios/message_*
+
+# Frontend specific
+de_avatar_lp_frontend/node_modules/
+de_avatar_lp_frontend/dist/
+de_avatar_lp_frontend/dist-ssr/
+de_avatar_lp_frontend/*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+>>>>>>> HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/development
+## ignore del back
+.env
+node_modules
+bin
+audios/message_*
+
+
+__pycache__/
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> origin/development
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Docker
+*.env
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~.nib
+
+contact_data.csv
+<<<<<<< HEAD
+=======
+>>>>>>> feature/pseudoagents_alicia
+>>>>>>> origin/development

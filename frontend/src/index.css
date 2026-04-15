@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --leva-sizes-rootWidth: 340px;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  background-color: #1A3B47;
+  background-image: url('src/assets/images/fondo_2.jpg');
+  background-size: cover;       /* que cubra toda la pantalla */
+  background-position: center;  /* centrada */
+  background-repeat: no-repeat; /* que no se repita */ 
+}
+
+body.pinkScreen {
+  background-color: #1e293b;
+  background-image: linear-gradient(19deg, #faaca8 0%, #ddd6f3 100%);
+}
+
+body.greenScreen {
+  background-color: #00ff00;
+  background-image: none;
+}

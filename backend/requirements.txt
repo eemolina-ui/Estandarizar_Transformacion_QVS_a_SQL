@@ -1,0 +1,26 @@
+fastapi==0.115.0
+python-dotenv==1.0.1
+openai==1.59.6
+requests==2.32.3
+uvicorn==0.30.6
+pydantic==2.9.2
+boto3==1.34.123
+langchain==0.3.14
+langchain-community==0.3.14
+langchain-openai==0.2.14
+langchain-qdrant==0.2.0
+langchain-text-splitters==0.3.5
+qdrant-client==1.12.2
+pypdf==4.2.0
+seaborn==0.13.2
+matplotlib==3.10.0
+pandas==2.2.3
+numpy==1.26.4
+# Modificaciones 
+azure-storage-blob==12.13.0
+azure.cognitiveservices.speech==1.38.0
+azure-ai-formrecognizer==3.3.3
+
+google-search-results==2.4.2
+pytrends==4.9.2
+faiss-cpu==1.9.0

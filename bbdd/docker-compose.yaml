@@ -1,0 +1,9 @@
+services:
+  forecast-service:
+    build:
+      context: .
+      dockerfile: chronos.dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      HF_TOKEN: "${HF_TOKEN}"
