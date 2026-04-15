@@ -241,3 +241,19 @@ Las contribuciones son bienvenidas. Por favor, abre un issue o un pull request p
         \---hooks
                 useChat.jsx
 ```
+
+
+# USO LOCAL
+## EJECUCION LOCAL
+
+### directorio de trabajo 
+cd directorio_del_proyecto
+code .                      :: ejecuta en ambiente CMD VSC 
+
+### contruccion de ambien
+docker-compose up --build   :: contruye contenedores | si se actualizar algun archivo de la carpeta frontend deberia ejecutarce este
+docker-compose up           :: carga contenedores
+
+## Si se requiere reconstruis ambien completo
+docker-compose down --rmi all --volumes --remove-orphans 
+docker-compose up --build
