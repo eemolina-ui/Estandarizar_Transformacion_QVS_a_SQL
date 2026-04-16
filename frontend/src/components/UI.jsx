@@ -16,9 +16,11 @@ export const UI = ({ hidden, ...props }) => {
   const cameraRef = useRef();
   const wrapperRef = useRef();
   const suggestionsRef = useRef();
+  const fileInputRef = useRef(); // Referencia para el input de archivo
   const { chat, loading, cameraZoomed, setCameraZoomed, message, setCameraAside, cameraAside, clearConversation } = useChat();
   const [isCameraBackground, setIsCameraBackground] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null); // Estado para el archivo seleccionado
 
   const [locations, setLocations] = useState([]);
   const [sampleData, setSampleData] = useState([]);
@@ -37,6 +39,9 @@ export const UI = ({ hidden, ...props }) => {
     "En una frase, ¿qué es lo que hacemos en Indra Chile?"
   ];
 
+  const QVS = "qvs";
+  const ArcExtQVS = `.${QVS}`;
+
   // Mostrar/ocultar sugerencias al hacer clic en el botón ?
   const toggleSuggestions = () => {
     console.log("Botón ? clickeado - Mostrando sugerencias");
@@ -54,6 +59,49 @@ export const UI = ({ hidden, ...props }) => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  // Manejar la selección de archivos
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setSelectedFile(file);
+      console.log("Archivo seleccionado:", file.name, "Tamaño:", file.size, "Tipo:", file.type);
+      
+      // Aquí puedes procesar el archivo según necesites
+      // Por ejemplo, leerlo como texto, imagen, etc.
+      
+      // Opcional: Mostrar una notificación o procesar automáticamente
+      // processFile(file);
+    }
+  };
+
+  // Función para procesar el archivo (opcional)
+  const processFile = async (file) => {
+    // Ejemplo: Leer archivo de texto
+    if (file.type === "text/plain") {
+      const text = await file.text();
+      console.log("Contenido del archivo:", text);
+      // Aquí puedes enviar el contenido al chat o procesarlo
+    }
+    
+    // Ejemplo: Leer imagen
+    if (file.type.startsWith("image/")) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        console.log("Imagen cargada:", e.target.result.substring(0, 100));
+        // Aquí puedes usar la imagen
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  // Limpiar archivo seleccionado (opcional)
+  const clearSelectedFile = () => {
+    setSelectedFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
 
   useEffect(() => {
     if (message && message.locations) {
@@ -169,11 +217,51 @@ export const UI = ({ hidden, ...props }) => {
     <>
       <div className={`fixed top-0 left-0 right-0 bottom-0 z-10 flex justify-between p-4 flex-col pointer-events-none ${isCameraBackground ? 'bg-opacity-50 backdrop-blur-sm' : ''}`}> 
         <div className="self-start backdrop-blur-md bg-white bg-opacity-50 p-4 rounded-lg max-w-lg border border-white/20 shadow-xl">
-          <h1 className="font-black text-xl">Ingrid Asistente Virtual Corporativo</h1>
+          <h1 className="font-black text-xl">Estandarizar Transformación QVS a SQL</h1>
           { !window.matchMedia("(max-width: 768px)").matches && (
-              <p className="text-gray-700"> Ingresa texto o haz clic en el botón de hablar para charlar.</p>
+              <p className="text-gray-700"> Mejorando tiempo de transformación de QVS a SQL.</p>
           )}
-        </div>  
+        </div>
+
+        {/* Inicio :: INPUT DE TIPO FILE CON NOMBRE E ID ESPECÍFICOS */}
+        {/*<div className="w-full max-w-lg mx-auto my-4 pointer-events-auto">*/}
+        <div className="self-start backdrop-blur-md bg-white bg-opacity-50 p-4 rounded-lg max-w-lg border border-white/40 pointer-events-auto">
+          {/* font-medium text-gray-900 dark:text-white */}
+          <label 
+            htmlFor="InputFile_QVS_01" 
+            className="block text-sm font-bold text-gray-700 mb-2"
+          >📎 Seleccione el archivo extencion {QVS.toUpperCase()}
+          </label>          
+          <input
+            ref={fileInputRef}
+            id="InputFile_QVS_01"
+            name="InputFile_QVS_01"
+            type="file"
+            className="w-full p-3 border-2 border-dashed border-[#7874B4] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7874B4] bg-white bg-opacity-90 backdrop-blur-sm text-gray-800 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#7874B4] file:text-white hover:file:bg-[#5e5a95] cursor-pointer"
+            onChange={handleFileChange}
+            accept={ArcExtQVS}
+          />
+          
+          {selectedFile && (
+            <div className="mt-2 flex items-center justify-between bg-gray-100 p-2 rounded">
+              <span className="text-sm text-gray-700 truncate flex-1">
+                📄 {selectedFile.name}
+              </span>
+              <button
+                type="button"
+                onClick={clearSelectedFile}
+                className="ml-2 text-red-500 hover:text-red-700 text-xs"
+              >
+                ✖
+              </button>
+            </div>
+          )}
+          
+          <p className="text-xs text-gray-600 mt-2">
+            📌 Puedes cargar archivos {QVS.toUpperCase()} para consultar su contenido
+          </p>
+        </div>
+        {/* Fin :: INPUT DE TIPO FILE CON NOMBRE E ID ESPECÍFICOS */}
 
         <CameraComponent 
           ref={cameraRef} 
